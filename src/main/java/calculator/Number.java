@@ -25,7 +25,6 @@ public class Number {
 
         StringBuilder numberCandidate = new StringBuilder();
         for(char c: input.toCharArray()) {
-            System.out.println(numberCandidate);
             if(separator.contains(c)) {
                 numbers.add(parse(numberCandidate));
                 numberCandidate = new StringBuilder();
