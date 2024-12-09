@@ -16,7 +16,8 @@ public class Application {
 
         Separator separator = new Separator(input);
         Number number = new Number(input, separator);
+        int sum = number.getSum();
 
-//        view.show(sum);
+        view.show(sum);
     }
 }
