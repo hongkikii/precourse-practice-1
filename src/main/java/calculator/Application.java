@@ -1,5 +1,7 @@
 package calculator;
 
+import static calculator.Validator.*;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -10,9 +12,11 @@ public class Application {
         view.showInputRequestMessage();
 
         String input = Console.readLine();
-        Number number = new Number(input);
-        int sum = number.getSum();
+        validate(input);
 
-        view.show(sum);
+        Separator separator = new Separator(input);
+        Number number = new Number(input);
+
+//        view.show(sum);
     }
 }
