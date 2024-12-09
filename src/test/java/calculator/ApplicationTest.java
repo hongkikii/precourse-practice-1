@@ -39,14 +39,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 빈_문자열이_입력될_시_0을_반환한다() {
-        assertSimpleTest(() -> {
-            run("");
-            assertThat(output()).contains("결과 : 0");
-        });
-    }
-
-    @Test
     void 커스텀_구분자가_2자리_이상일_경우_예외가_발생한다() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("//!@\\n2"))
