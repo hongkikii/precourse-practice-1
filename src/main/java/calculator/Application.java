@@ -15,7 +15,7 @@ public class Application {
         validate(input);
 
         Separator separator = new Separator(input);
-        Number number = new Number(input);
+        Number number = new Number(input, separator);
 
 //        view.show(sum);
     }

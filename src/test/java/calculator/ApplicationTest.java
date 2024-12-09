@@ -1,6 +1,7 @@
 package calculator;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -67,5 +68,23 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("//1\\n2"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @DisplayName("기본 구분자, 커스텀 구분자, 양수 이외의 문자가 추출되는 경우 예외가 발생한다.")
+    @Test
+    void exceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//#\\n2:3)5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("기본 구분자, 커스텀 구분자, 양수를 포함할 경우 정상적으로 결과를 출력한다.")
+    @Test
+    void printTest() {
+        assertSimpleTest(() -> {
+            run("//;\\n1:2,3;400");
+            assertThat(output()).contains("결과 : 406");
+        });
     }
 }

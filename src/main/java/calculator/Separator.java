@@ -1,13 +1,13 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Separator {
-    private final List<Character> separators;
+    private final Set<Character> separators;
 
     public Separator(String input) {
-        separators = new ArrayList<>();
+        separators = new HashSet<>();
         separators.add(',');
         separators.add(':');
 
