@@ -32,14 +32,16 @@ public class Number {
             }
             numberCandidate.append(c);
         }
-        if(numberCandidate.length() > 0) {
-            numbers.add(parse(numberCandidate));
-        }
+        numbers.add(parse(numberCandidate));
     }
 
     private int parse(StringBuilder numberCandidate) {
         try {
-            return Integer.parseInt(numberCandidate.toString());
+            int result = Integer.parseInt(numberCandidate.toString());
+            if (result <= 0) {
+                throw new IllegalArgumentException();
+            }
+            return result;
         }
         catch (NumberFormatException e) {
             throw new IllegalArgumentException();

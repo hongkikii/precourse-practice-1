@@ -62,9 +62,9 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @DisplayName("기본 구분자, 커스텀 구분자, 양수 이외의 문자가 추출되는 경우 예외가 발생한다.")
+    @DisplayName("기본 구분자, 커스텀 구분자 이외의 문자가 추출되는 경우 예외가 발생한다.")
     @Test
-    void exceptionTest() {
+    void separatorTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("//#\\n2:3)5"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -78,5 +78,14 @@ class ApplicationTest extends NsTest {
             run("//;\\n1:2,3;400");
             assertThat(output()).contains("결과 : 406");
         });
+    }
+
+    @DisplayName("0이 입력되는 경우 예외가 발생한다.")
+    @Test
+    void zeroTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("0:3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
