@@ -88,4 +88,22 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @DisplayName("21억 이상의 숫자가 추출되는 경우 예외가 발생한다.")
+    @Test
+    void maxNumberTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("2100000001:3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("숫자의 합이 21억을 초과할 경우 예외가 발생한다.")
+    @Test
+    void maxSumTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1000000001:2100000000"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }

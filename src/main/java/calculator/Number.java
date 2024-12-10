@@ -14,8 +14,16 @@ public class Number {
     }
 
     public int getSum() {
-        return numbers.stream()
-                .mapToInt(Integer::intValue).sum();
+        try {
+            int sum = numbers.stream()
+                    .mapToInt(Integer::intValue).sum();
+            if(sum < 0) {
+                throw new IllegalArgumentException();
+            }
+            return sum;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void save(String input) {
@@ -32,13 +40,15 @@ public class Number {
             }
             numberCandidate.append(c);
         }
-        numbers.add(parse(numberCandidate));
+        if(numberCandidate.length() > 0) {
+            numbers.add(parse(numberCandidate));
+        }
     }
 
     private int parse(StringBuilder numberCandidate) {
         try {
             int result = Integer.parseInt(numberCandidate.toString());
-            if (result <= 0) {
+            if (result <= 0 || result > 21_0000_0000) {
                 throw new IllegalArgumentException();
             }
             return result;
